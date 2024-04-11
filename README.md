@@ -1,40 +1,50 @@
-# phishing-website-detection-content-based
-This is an End-to-End Machine Learning Project which focuses on phishing websites to classify phishing and legitimate ones. Particularly, I focused on content-based features like html tag based features. You can find feature extraction, data collection, preparation process here. Also, building ML models, evaluating them are available here.
+# Phishing Website Detection using Machine Learning
 
+This project is a web-based application developed for educational purposes. It aims to detect phishing websites using machine learning techniques. The application focuses on content-based analysis of HTML web pages to determine whether they are phishing or legitimate websites.
 
-## inputs
-- csv files of phishing and legitimate URLs
-  - verified_online.csv --> phishing websites URLs from phishtank.org
-  - tranco_list.csv --> legitimate websites URLs from tranco-list.eu
-  
-## general flow
-- Use csv file to get URLs
-- Send a request to each URL and receive a response by requests library of python
-- Use the content of response and parse it by BeautifulSoup module
-- Extract features and create a vector which contains numerical values for each feature
-- Repeat feature extraction process for all content\websites and create a structured dataframe
-- Add label at the end to the dataframes | 1 for phishing 0 for legitimate
-- Save the dataframe as csv and structured_data files are ready!
-  - Check "structured_data_legitimate.csv" and "structured_data_phishing.csv" files. 
-- After obtaining structured data, you can use combine them and use them as train and test data
-- You can split data as train and test like in the machine_learning.py first part, or you can implement K-fold cross-validation like in the second part of the same file. I implemented K-fold as K=5.
-- Then I implemented five different ML models:
-  - Support Vector Machine
-  - Gaussian Naive Bayes
-  - Decision Tree
-  - Random Forest
-  - AdaBoost
-- You can obtain the confusion matrix, and performance measures: accuracy, precision, recall
-- Finally, I visualized the performance measures for all models.
-  - Naive Bayes is the best for my case.
+## Overview
 
-## important notes
-- features are content-based and need BeautifulSoup module's methods and fields etc So, you should install it.
-- this code is an output of a video series on the YouTube --> https://www.youtube.com/watch?v=-Aldptec9Xs&list=PL8Uzrd8g1md8kdvNJy0BNRc3cJfVP8QEf
+The Phishing Website Detection app employs supervised learning techniques to classify websites as either phishing or legitimate. It utilizes a content-based approach, extracting features from the HTML content of web pages. The application is built using Streamlit, and machine learning models from scikit-learn are used for classification.
 
+## Requirements
 
-## dataset
-- with your URL list, you can create your own dataset by using data_collector python file.
+- Python 3.x
+- Streamlit
+- Beautiful Soup
+- Requests
+- Matplotlib
+- scikit-learn
 
-# NOTE
-- Machine Learnining files will be added after the videos are uploaded!
+## Data Sources
+
+The data used in this project is collected from "phishtank.org" and "tranco-list.eu" websites. The dataset consists of a total of 26,584 websites, with 16,060 legitimate websites and 10,524 phishing websites. The dataset was created in October 2022.
+
+## Approach
+
+- **Feature Extraction**: Content-based features are extracted from HTML web pages using the BeautifulSoup module after parsing.
+- **Model Selection**: Seven different machine learning classifiers from scikit-learn are tested and evaluated using k-fold cross-validation.
+- **Model Comparison**: Confusion matrices, accuracy, precision, and recall scores are calculated for each model to evaluate their performance.
+
+## Usage
+
+1. Clone this repository to your local machine.
+2. Install the required dependencies by running `pip install -r requirements.txt`.
+3. Run the Streamlit application by executing `streamlit run app.py`.
+4. Open your web browser and navigate to the provided URL (usually `http://localhost:8501`).
+5. Enter the URL of a web page in the input field and click "Check!" to determine if it's a phishing website or not.
+
+## Example Phishing URLs
+
+- https://rtyu38.godaddysites.com/
+- https://karafuru.invite-mint.com/
+- https://defi-ned.top/h5/#/
+
+**Note**: Phishing web pages have a short lifecycle, so the examples provided should be updated regularly.
+
+## Author
+
+DEENA D
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
